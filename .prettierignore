@@ -1,0 +1,3 @@
+/package.json
+/envs
+*/**/Pulumi.*.yaml

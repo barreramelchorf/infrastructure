@@ -1,0 +1,19 @@
+encryptionsalt: v1:SpDiR2ePwM8=:v1:VHQJvGiFGYzKkC/g:suGpR1nhAFpTQQ9cl6jSGlvIM68YGA==
+config:
+  aws:region: us-east-1
+  kubernetes:context: arn:aws:eks:us-east-1:654654392712:cluster/dev-cluster-staging
+  ingress-nginx:config:
+    replicas:
+      max: 2
+      min: 1
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    version: 4.8.0
+  ingress-nginx:externalSubnetIds: 'subnet-04d49a3f5506e6478,subnet-0c85b06644fa59d34'
+  ingress-nginx:internalSubnetIds: 'subnet-01a867d7ac83a97e9,subnet-069191060301a130d'
+  ingress-nginx:reviewAppsEnabled: "true"

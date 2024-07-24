@@ -1,0 +1,30 @@
+{
+    "name": "infrastructure",
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.0.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "prettier": "^3.0.0"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^6.0.0",
+        "@pulumi/command": "^0.10.0",
+        "@pulumi/datadog": "^4.14.0",
+        "@pulumi/eks": "^1.0.1",
+        "@pulumi/gcp": "^6.49.0",
+        "@pulumi/kubernetes": "^4.0.0",
+        "@pulumi/pulumi": "^3.60.1",
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "lint:other": "prettier --write './**/*.{json,md,yml,yaml}'",
+        "lint:js": "eslint --fix '**/*.ts'",
+        "lint": "yarn lint:js && yarn lint:other",
+        "lint:check:js": "eslint --fix-dry-run --max-warnings=0 '**/*.ts'",
+        "lint:check:other": "prettier --list-different --log-level warn './**/*.{json,md,yml,yaml}'",
+        "lint:check": "yarn lint:check:js && yarn lint:check:other"
+    }
+}

@@ -1,0 +1,7 @@
+encryptionsalt: v1:uevt/WTBT0o=:v1:zHPXj5Fhw/qcHdJg:jkv/DquRFVZVaLVqH3sC5NM/Hi4qaw==
+config:
+  aws:region: us-east-1
+  kubernetes:context: arn:aws:eks:us-east-1:654654392712:cluster/dev-cluster-staging
+  external-dns:chartVersion: 6.7.5
+  external-dns:interval: 2m
+  external-dns:policy: sync

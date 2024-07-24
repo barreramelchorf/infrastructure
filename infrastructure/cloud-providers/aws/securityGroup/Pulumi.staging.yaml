@@ -1,0 +1,18 @@
+encryptionsalt: v1:y4Qb2UKQ2bY=:v1:5Nk++yyDfqE5C+ca:SXUZQhmHt5Ud3ybtJkQpMh66QXCAlw==
+config:
+  aws:region: us-east-1
+  security-group:securityGroups:
+    - description: "connection-db-staging"
+      egress:
+        - cidrBlocks: ["0.0.0.0/0"]
+          fromPort: 0
+          protocol: "-1"
+          toPort: 0
+      ingress:
+        - cidrBlocks: ["0.0.0.0/0"]
+          fromPort: 5432
+          protocol: "tcp"
+          toPort: 5432
+      name: "db-staging"
+      nameConfig: sg-staging
+      vpcId: "vpc-06675bd318eef3cfc"

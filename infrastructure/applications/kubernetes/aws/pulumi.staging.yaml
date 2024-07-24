@@ -1,0 +1,32 @@
+encryptionsalt: v1:zSCw9L0jwhQ=:v1:QkdUv8nvuygmkSCD:NC1/rxuOTbRsK6007mJmcqGr84EowA==
+config:
+  aws:region: us-east-1
+  kubernetes:awsAccountId: "654654392712"
+  kubernetes:cluster-autoscaler:
+    - chartVersion: v9.23.0
+      cluster: dev
+      enabled: true
+  kubernetes:eks:
+    - name: dev
+      nodes:
+        - desiredCapacity: 1
+          instanceType: t3.medium
+          labelName: general
+          maxSize: 5
+          minSize: 1
+          name: dev
+          size: 10 # The size in GiB
+          spot: true
+      version: '1.27'
+      vpcId: 'vpc-06675bd318eef3cfc'
+      vpcPrivateSubnetsIds:
+        - 'subnet-01a867d7ac83a97e9'
+        - 'subnet-069191060301a130d'
+  kubernetes:metrics-server:
+    - chartVersion: v3.8.3
+      cluster: dev
+      enabled: true
+  kubernetes:users:
+    - arn: arn:aws:iam::654654392712:user/fbarrera
+      group: system:masters
+      username: fbarrera

@@ -1,0 +1,5 @@
+encryptionsalt: v1:dE6UzgisBeg=:v1:u3UBWiAwyRQ8k2cs:LOnXUYjT07/GylZBkVIyoaZnSulxZw==
+config:
+  aws:region: us-east-1
+  cert-manager:chartVersion: v1.13.3
+  kubernetes:context: arn:aws:eks:us-east-1:654654392712:cluster/dev-cluster-staging

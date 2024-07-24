@@ -1,0 +1,24 @@
+encryptionsalt: v1:tSHn/wn0/Fs=:v1:/xUKLfPErIfpzG7F:Uto8lOs1dC/pYsusufPy77Zfr1YfIQ==
+config:
+  aws:region: us-east-1
+  vpc:networkConfig:
+    challenge:
+      availabilityZones: [a, b]
+      routeTable:
+        private:
+          cidrBlock: "0.0.0.0/0"
+        public:
+          cidrBlock: "0.0.0.0/0"
+      subnets:
+        private:
+          a:
+            - 10.0.3.0/24
+          b:
+            - 10.0.4.0/24
+        public:
+          a:
+            - 10.0.5.0/24
+          b:
+            - 10.0.6.0/24
+      vpcConfig:
+        cidrBlock: "10.0.0.0/16"
