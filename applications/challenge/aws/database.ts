@@ -8,7 +8,6 @@ let database: aws.rds.Instance | pulumi.Output<aws.rds.Instance>;
 let record: aws.route53.Record | pulumi.Output<aws.route53.Record>;
 
 if (isReviewApp()) {
-  console.log("reviewapp")
   const stagingRDatabase = config.stagingRef.getOutput('aws');
   database = stagingRDatabase.apply(( database: { database: { instance: aws.rds.Instance } }) => database.database.instance);
   record = stagingRDatabase.apply(( database: { database: { record: aws.route53.Record } } ) => {
