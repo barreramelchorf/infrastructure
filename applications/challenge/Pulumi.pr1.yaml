@@ -35,7 +35,7 @@ config:
     migrationsVersion: "64052e7"
     reviewApp:
       pr: 1
-    version: "8775a5b"
+    version: "a228328"
     visibility: external
   challenge:databaseConfig:
     engine: "postgres"
