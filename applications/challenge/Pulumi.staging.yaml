@@ -1,5 +1,6 @@
 encryptionsalt: v1:DRL8cZWDalk=:v1:sFj3uiSTHDLgiWGP:YX8886FPpgWC3by5Z6fIsxuTWa/UBQ==
 config:
+  aws:region: us-east-1
   challenge:app:
     deployment:
       autoscaling:
@@ -26,13 +27,13 @@ config:
         max: 4
         min: 1
     env:
-      POSTGRES_USER: fernando
       POSTGRES_DB: challenge
       POSTGRES_PASSWORD: fernando123
       POSTGRES_PORT: '5432'
+      POSTGRES_USER: fernando
     imageRepository: 654654392712.dkr.ecr.us-east-1.amazonaws.com
-    migrationsVersion: "64052e7"
-    version: "64052e7"
+    migrationsVersion: "8e012b2"
+    version: "8e012b2"
     visibility: external
   challenge:databaseConfig:
     engine: "postgres"
@@ -40,5 +41,4 @@ config:
     instanceClass: db.t3.micro
     size: 20
     vpc: challenge
-  aws:region: us-east-1
   kubernetes:context: arn:aws:eks:us-east-1:654654392712:cluster/dev-cluster-staging
