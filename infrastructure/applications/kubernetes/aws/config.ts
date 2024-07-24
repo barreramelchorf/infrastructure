@@ -1,5 +1,6 @@
 import * as standard from '../../../../config/standard';
 import * as aws from '@pulumi/aws';
+import * as pulumi from '@pulumi/pulumi';
 
 // Standard configs
 export * from '../../../../config/standard';
@@ -19,9 +20,8 @@ interface EksNode {
 interface EksConfiguration {
   name: string;
   version: string;
-  vpcId: string;
-  vpcPublicSubnetsIds: string[];
-  vpcPrivateSubnetsIds: string[];
+  vpc: string;
+  private: boolean;
   nodes: EksNode[];
 }
 

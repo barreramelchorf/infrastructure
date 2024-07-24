@@ -14,6 +14,5 @@ config:
         cpu: 100m
         memory: 64Mi
     version: 4.8.0
-  ingress-nginx:externalSubnetIds: 'subnet-04d49a3f5506e6478,subnet-0c85b06644fa59d34'
-  ingress-nginx:internalSubnetIds: 'subnet-01a867d7ac83a97e9,subnet-069191060301a130d'
+    vpc: 'challenge'
   ingress-nginx:reviewAppsEnabled: "true"

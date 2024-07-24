@@ -5,14 +5,20 @@ import * as pulumi from '@pulumi/pulumi';
 import { isReviewApp } from '../../../libraries/reviewApps';
 
 let database: aws.rds.Instance | pulumi.Output<aws.rds.Instance>;
+let record: aws.route53.Record | pulumi.Output<aws.route53.Record>;
+
 if (isReviewApp()) {
-  const stagingRDatabase = require('../stagingStackReference').apiStaging.getOutput('aws');
-  database = stagingRDatabase.apply((aws: { role: { role: aws.iam.Role } }) => aws.role.role);
+  console.log("reviewapp")
+  const stagingRDatabase = config.stagingRef.getOutput('aws');
+  database = stagingRDatabase.apply(( database: { database: { instance: aws.rds.Instance } }) => database.database.instance);
+  record = stagingRDatabase.apply(( database: { database: { record: aws.route53.Record } } ) => {
+    console.log(database.database.record)
+    return database.database.record});
 } else {
   const subnetGroup = new aws.rds.SubnetGroup(`${config.environment}-${config.projectName}`, {
     name: `${config.environment}-${config.projectName}`,
     description: `Subnet for the ${config.projectName}`,
-    subnetIds: config.databaseConfig.subnetIds,
+    subnetIds: config.privateSubnets,
     tags: config.tags,
   });
   database = new aws.rds.Instance(`${config.projectName}-database`, {
@@ -27,8 +33,15 @@ if (isReviewApp()) {
     vpcSecurityGroupIds: [config.securityGroup.id],
     skipFinalSnapshot: true,
 });
+record = new aws.route53.Record(`${config.environment}-${config.projectName}`, {
+  name: `${config.projectName}-db.${config.shared.domain}`,
+  records: [database.address],
+  ttl: 300,
+  type: 'CNAME',
+  zoneId: config.shared.domains[config.shared.domain].zoneId,
+});
 
 
 }
 
-export { database };
+export { record, database };

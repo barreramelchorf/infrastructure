@@ -6,6 +6,7 @@ import { annotations, envs } from '../../../libraries/datadog';
 import { isReviewApp } from '../../../libraries/reviewApps';
 import { DefaultSecurityContext } from '../../../libraries/types/app/kubernetes/partials/defaultSecurityContext';
 import * as labels from '../../../libraries/labels';
+import {database} from '../aws/database';
 
 export const Deployment = () =>
   new k8s.apps.v1.Deployment(config.projectName, {
@@ -91,4 +92,7 @@ export const Deployment = () =>
         },
       },
     },
-  });
+  },
+{
+  dependsOn: [database]
+});

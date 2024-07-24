@@ -15,4 +15,4 @@ config:
           toPort: 5432
       name: "db-staging"
       nameConfig: sg-staging
-      vpcId: "vpc-06675bd318eef3cfc"
+      vpc: "challenge"
