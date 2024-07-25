@@ -44,17 +44,7 @@ export default class ReviewApp extends Command {
     }
 
     // Select the stack and automatically create it if it does not exist
-    execa(
-      'pulumi',
-      [
-        'stack',
-        'select',
-        `${environment}`,
-        '-c',
-        '--secrets-provider=passphrase',
-      ],
-      { stdio: 'inherit' }
-    )?.stdout?.pipe(process.stdout);
+    execa('pulumi', ['stack', 'select', `${environment}`, '-c', '--secrets-provider=passphrase'], { stdio: 'inherit' })?.stdout?.pipe(process.stdout);
 
     // Apply the changes
     try {

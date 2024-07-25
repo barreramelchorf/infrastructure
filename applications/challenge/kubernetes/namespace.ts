@@ -7,6 +7,6 @@ export const namespace = new k8s.core.v1.Namespace(config.projectName, {
   metadata: {
     name: getNamespace(),
     labels: config.app.labels,
-    annotations: annotations.linkerdAnnotation("disabled"),
+    annotations: annotations.linkerdAnnotation('disabled'),
   },
 });

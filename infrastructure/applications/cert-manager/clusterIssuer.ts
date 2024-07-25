@@ -30,5 +30,5 @@ new k8s.apiextensions.CustomResource(
       },
     },
   },
-  { dependsOn: [chart] }
+  { dependsOn: [chart] },
 );

@@ -57,15 +57,7 @@ export default class Preview extends Command {
 
       for (const environment of environments) {
         // Select the environment and automatically create it if it does not exist
-        const selectEnvironment = execa('pulumi', [
-          'stack',
-          '--cwd',
-          project,
-          'select',
-          `${environment}`,
-          '-c',
-          '--secrets-provider=passphrase',
-        ]);
+        const selectEnvironment = execa('pulumi', ['stack', '--cwd', project, 'select', `${environment}`, '-c', '--secrets-provider=passphrase']);
         selectEnvironment?.stdout?.pipe(process.stdout);
         await selectEnvironment;
 

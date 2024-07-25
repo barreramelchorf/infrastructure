@@ -70,17 +70,7 @@ export default class App extends Command {
     });
 
     // Select the stack and automatically create it if it does not exist
-    execa(
-      'pulumi',
-      [
-        'stack',
-        'select',
-        `${environment}`,
-        '-c',
-        '--secrets-provider=passphrase',
-      ],
-      { stdio: 'inherit' }
-    )?.stdout?.pipe(process.stdout);
+    execa('pulumi', ['stack', 'select', `${environment}`, '-c', '--secrets-provider=passphrase'], { stdio: 'inherit' })?.stdout?.pipe(process.stdout);
 
     const startTime = Math.floor(Date.now() / 1000);
 

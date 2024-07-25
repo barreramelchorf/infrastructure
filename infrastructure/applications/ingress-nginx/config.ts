@@ -15,7 +15,7 @@ interface NginxConfiguration {
 
 export const nginx: NginxConfiguration = standard.project.requireObject('config');
 
-const vpcRef = new pulumi.StackReference(`organization/vpc/${standard.environment}`).getOutput('vpcConf')
+const vpcRef = new pulumi.StackReference(`organization/vpc/${standard.environment}`).getOutput('vpcConf');
 export const privateSubnets: pulumi.Output<string> = vpcRef.apply((vpcConfValue: any) => {
   const subnets = vpcConfValue[nginx.vpc].privateSubnets;
   const ids: string[] = subnets.map((subnet: any) => subnet.id);

@@ -8,6 +8,6 @@ export = async (provider: k8s.Provider, clusterName: string) => {
       file: `addons/nodelocaldns.yml`,
       resourcePrefix: `${clusterName}`,
     },
-    { provider: provider }
+    { provider: provider },
   );
 };

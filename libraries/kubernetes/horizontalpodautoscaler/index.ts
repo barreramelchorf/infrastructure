@@ -11,7 +11,7 @@ export const HorizontalPodAutoscaler = (
   deployment: k8s.apps.v1.Deployment,
   name?: string,
   specArgs?: inputs.autoscaling.v2.HorizontalPodAutoscalerSpec,
-  opts?: pulumi.CustomResourceOptions
+  opts?: pulumi.CustomResourceOptions,
 ): void => {
   const config = new pulumi.Config();
   const appConfig = config.requireObject<KubernetesApp>('app');
@@ -43,6 +43,6 @@ export const HorizontalPodAutoscaler = (
         ...specArgs,
       },
     },
-    opts
+    opts,
   );
 };

@@ -13,7 +13,7 @@ export = async (provider: k8s.Provider, clusterName: string) => {
     },
     {
       provider: provider,
-    }
+    },
   );
 
   new k8s.helm.v3.Chart(
@@ -40,6 +40,6 @@ export = async (provider: k8s.Provider, clusterName: string) => {
         },
       },
     },
-    { dependsOn: [namespace], provider: provider }
+    { dependsOn: [namespace], provider: provider },
   );
 };

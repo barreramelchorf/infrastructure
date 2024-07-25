@@ -20,14 +20,13 @@ yarn install
 On the `application` folder we have all applications deployed on the kubernetes cluster, e.g `api-skeleton`  
 On the `infrastructure` folder we have all stuff for cloud-provider, kubernetes cluster, applications for infrastrucutre on cluster like, `cert-manager, datadog` etc.
 
-
 ### Labels
 
 Use labels for each secret, the required fields are:
 
 - env (e.g staging)
 - application (e.g quickpay)
-- squad 
+- squad
 
 ## Deploy
 

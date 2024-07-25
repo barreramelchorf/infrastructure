@@ -12,7 +12,7 @@ export const Service = (
   targetPort = 8080,
   store?: string | undefined,
   specArgs?: inputs.core.v1.ServiceSpec,
-  opts?: pulumi.CustomResourceOptions
+  opts?: pulumi.CustomResourceOptions,
 ): k8s.core.v1.Service => {
   return new k8s.core.v1.Service(
     `${globalConfig.projectName}${store ? `-${store}` : ''}`,
@@ -32,6 +32,6 @@ export const Service = (
         ...specArgs,
       },
     },
-    opts
+    opts,
   );
 };

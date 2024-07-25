@@ -76,9 +76,7 @@ new k8s.helm.v3.Chart(
           targetMemoryUtilizationPercentage: 75,
           targetCPUUtilizationPercentage: 75,
         },
-        extraEnvs: [
-          ...envs.CentralAPM(config.environment),
-        ],
+        extraEnvs: [...envs.CentralAPM(config.environment)],
         extraArgs: extraArgs,
         metrics: {
           enabled: true,
@@ -134,7 +132,7 @@ new k8s.helm.v3.Chart(
   },
   {
     dependsOn: [namespace],
-  }
+  },
 );
 
 new k8s.helm.v3.Chart(
@@ -183,9 +181,7 @@ new k8s.helm.v3.Chart(
           targetMemoryUtilizationPercentage: 75,
           targetCPUUtilizationPercentage: 75,
         },
-        extraEnvs: [
-          ...envs.CentralAPM(config.environment),
-        ],
+        extraEnvs: [...envs.CentralAPM(config.environment)],
         extraArgs: extraArgs,
         metrics: {
           enabled: true,
@@ -239,5 +235,5 @@ new k8s.helm.v3.Chart(
   },
   {
     dependsOn: [namespace],
-  }
+  },
 );

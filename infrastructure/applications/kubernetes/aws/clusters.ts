@@ -5,16 +5,10 @@ import { roleEks, roleNodeGroup, roleClusterAdmin, instanceProfileNodeCluster } 
 import { buildRbacs } from './rbac';
 import * as pulumi from '@pulumi/pulumi';
 
-interface VpcConf {
-  vpcId: string,
-  privateSubnets: String[],
-  publicSubnets: String[] | undefined
-}
-
 const clusters: { [name: string]: k8s.Provider } = {};
 
 config.clusters.forEach((eks) => {
-  const vpcRef = new pulumi.StackReference(`organization/vpc/${config.environment}`).getOutput('vpcConf')
+  const vpcRef = new pulumi.StackReference(`organization/vpc/${config.environment}`).getOutput('vpcConf');
   const clusterName = `${eks.name}-cluster-${config.environment}`;
   const cluster = new awsEks.Cluster(
     clusterName,
@@ -22,9 +16,17 @@ config.clusters.forEach((eks) => {
       name: clusterName,
       version: eks.version,
       skipDefaultNodeGroup: true,
-      privateSubnetIds: vpcRef.apply(vpc=>{return vpc[eks.vpc].privateSubnets.map((subnet: any) => subnet.id)}),
-      publicSubnetIds: eks.private? undefined: vpcRef.apply(vpc=>{return vpc[eks.vpc].publicSubnets.map((subnet: any) => subnet.id)}),
-      vpcId: vpcRef.apply(vpc=>{return vpc[eks.vpc].vpc.id}),
+      privateSubnetIds: vpcRef.apply((vpc) => {
+        return vpc[eks.vpc].privateSubnets.map((subnet: any) => subnet.id);
+      }),
+      publicSubnetIds: eks.private
+        ? undefined
+        : vpcRef.apply((vpc) => {
+            return vpc[eks.vpc].publicSubnets.map((subnet: any) => subnet.id);
+          }),
+      vpcId: vpcRef.apply((vpc) => {
+        return vpc[eks.vpc].vpc.id;
+      }),
       instanceRoles: [roleEks, roleNodeGroup],
       nodeAssociatePublicIpAddress: false,
       tags: { ...config.tags, Name: clusterName },
@@ -44,7 +46,7 @@ config.clusters.forEach((eks) => {
     {
       protect: false,
       dependsOn: [instanceProfileNodeCluster, roleEks, roleNodeGroup],
-    }
+    },
   );
 
   clusters[eks.name] = cluster.provider;
@@ -57,7 +59,9 @@ config.clusters.forEach((eks) => {
         cluster: cluster,
         nodeRootVolumeSize: node.size,
         nodeAssociatePublicIpAddress: false,
-        nodeSubnetIds: vpcRef.apply(vpc=>{return vpc[eks.vpc].privateSubnets.map((subnet: any) => subnet.id)}),
+        nodeSubnetIds: vpcRef.apply((vpc) => {
+          return vpc[eks.vpc].privateSubnets.map((subnet: any) => subnet.id);
+        }),
         instanceType: node.instanceType,
         desiredCapacity: node.desiredCapacity,
         minSize: node.minSize,
@@ -78,7 +82,7 @@ config.clusters.forEach((eks) => {
       },
       {
         protect: false,
-      }
+      },
     );
   });
 

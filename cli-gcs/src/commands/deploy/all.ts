@@ -34,7 +34,7 @@ export default class All extends Command {
       `git rev-list HEAD...${args.previousCommit} --grep='\\[ci skip\\]' --invert-grep | xargs -I {} git log --format="" --name-only -n1 {} --`,
       {
         shell: true,
-      }
+      },
     );
     const changedFiles = stdout.split('\n');
 
@@ -75,15 +75,7 @@ export default class All extends Command {
 
       for (const environment of environments) {
         // Select the environment and automatically create it if it does not exist
-        const selectEnvironment = execa('pulumi', [
-          'stack',
-          '--cwd',
-          project,
-          'select',
-          `${environment}`,
-          '-c',
-          '--secrets-provider=passphrase',
-        ]);
+        const selectEnvironment = execa('pulumi', ['stack', '--cwd', project, 'select', `${environment}`, '-c', '--secrets-provider=passphrase']);
         selectEnvironment?.stdout?.pipe(process.stdout);
         await selectEnvironment;
 

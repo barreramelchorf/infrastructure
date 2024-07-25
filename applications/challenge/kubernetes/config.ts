@@ -17,4 +17,3 @@ app.labels = {
   app: globalConfig.projectName,
 };
 app.host = getHost();
-

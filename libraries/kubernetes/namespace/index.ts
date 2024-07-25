@@ -9,9 +9,8 @@ export const Namespace = (
     [key: string]: string;
   },
   args?: NamespaceArgs,
-  opts?: pulumi.CustomResourceOptions
+  opts?: pulumi.CustomResourceOptions,
 ) => {
-
   return new k8s.core.v1.Namespace(
     globalConfig.projectName,
     {
@@ -21,6 +20,6 @@ export const Namespace = (
       },
       ...args,
     },
-    opts
+    opts,
   );
 };

@@ -1,6 +1,5 @@
 import * as standard from '../../../../config/standard';
 import * as aws from '@pulumi/aws';
-import * as pulumi from '@pulumi/pulumi';
 
 // Standard configs
 export * from '../../../../config/standard';

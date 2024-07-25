@@ -15,7 +15,7 @@ export const buildRbacs = (provider: k8s.Provider, cluster: string) => {
         },
       ],
     },
-    { provider: provider }
+    { provider: provider },
   );
 
   new k8s.rbac.v1.ClusterRoleBinding(
@@ -36,7 +36,7 @@ export const buildRbacs = (provider: k8s.Provider, cluster: string) => {
         apiGroup: 'rbac.authorization.k8s.io',
       },
     },
-    { provider: provider }
+    { provider: provider },
   );
 
   new k8s.rbac.v1.ClusterRole(
@@ -53,7 +53,7 @@ export const buildRbacs = (provider: k8s.Provider, cluster: string) => {
         },
       ],
     },
-    { provider: provider }
+    { provider: provider },
   );
 
   new k8s.rbac.v1.ClusterRoleBinding(
@@ -74,6 +74,6 @@ export const buildRbacs = (provider: k8s.Provider, cluster: string) => {
         apiGroup: 'rbac.authorization.k8s.io',
       },
     },
-    { provider: provider }
+    { provider: provider },
   );
 };

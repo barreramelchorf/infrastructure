@@ -73,5 +73,5 @@ export const chart = new k8s.helm.v3.Chart(
       },
     },
   },
-  { dependsOn: [namespace, cdrs] }
+  { dependsOn: [namespace, cdrs] },
 );

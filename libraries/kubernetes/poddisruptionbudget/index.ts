@@ -38,6 +38,6 @@ export const PodDisruptionBudget = (
       },
       ...specs,
     },
-    opts
+    opts,
   );
 };

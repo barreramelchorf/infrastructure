@@ -51,7 +51,7 @@ export class ResourceLimits extends pulumi.ComponentResource {
       },
       {
         parent: this,
-      }
+      },
     );
 
     new k8s.core.v1.LimitRange(
@@ -87,7 +87,7 @@ export class ResourceLimits extends pulumi.ComponentResource {
       },
       {
         parent: this,
-      }
+      },
     );
   }
 }

@@ -3,13 +3,13 @@ import * as config from './config';
 
 interface VpcConf {
   [name: string]: {
-    vpc: aws.ec2.Vpc,
-    publicSubnets: aws.ec2.Subnet[],
-    privateSubnets: aws.ec2.Subnet[]
-  }
+    vpc: aws.ec2.Vpc;
+    publicSubnets: aws.ec2.Subnet[];
+    privateSubnets: aws.ec2.Subnet[];
+  };
 }
 
-let vpcConf: VpcConf = {};
+const vpcConf: VpcConf = {};
 
 const availabilityZones: { [key: string]: string } = {
   a: 'use1-az4',

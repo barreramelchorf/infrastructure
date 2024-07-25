@@ -10,7 +10,7 @@ export const Job = (
   namespace: k8s.core.v1.Namespace | string,
   store?: string | undefined,
   specs?: inputs.batch.v1.JobSpec,
-  opts?: pulumi.CustomResourceOptions
+  opts?: pulumi.CustomResourceOptions,
 ): void => {
   new k8s.batch.v1.Job(
     `${globalConfig.projectName}${store ? `-${store}` : ''}`,
@@ -21,7 +21,7 @@ export const Job = (
       },
       spec: specs,
     },
-    opts
+    opts,
   );
 };
 

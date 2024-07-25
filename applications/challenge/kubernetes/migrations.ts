@@ -3,7 +3,7 @@ import { namespace } from './namespace';
 import * as config from './config';
 import { envVars } from './envVars';
 import { isReviewApp } from '../../../libraries/reviewApps';
-import {database} from '../aws/database';
+import { database } from '../aws/database';
 
 const labels = {
   ...config.app.labels,
@@ -80,7 +80,7 @@ if (!isReviewApp()) {
       customTimeouts: {
         create: '1h', // Allow migrations to run for an hour
       },
-      dependsOn: [database]
-    }
+      dependsOn: [database],
+    },
   );
 }

@@ -5,9 +5,9 @@ import * as pulumi from '@pulumi/pulumi';
 
 interface SecurityGroupConfig extends SecurityGroupArgs {
   nameConfig: string;
-  vpc: string
+  vpc: string;
 }
 
-export const vpcRef = new pulumi.StackReference(`organization/vpc/${standard.environment}`).getOutput('vpcConf')
+export const vpcRef = new pulumi.StackReference(`organization/vpc/${standard.environment}`).getOutput('vpcConf');
 
 export const securityGroupConfigs: SecurityGroupConfig[] = standard.project.requireObject('securityGroups');
