@@ -16,5 +16,5 @@ app.labels = {
   'app.kubernetes.io/component': 'api',
   app: globalConfig.projectName,
 };
-app.host = getHost('challenge-fer');
+app.host = getHost();
 
