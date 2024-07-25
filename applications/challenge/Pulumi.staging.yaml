@@ -32,8 +32,8 @@ config:
       POSTGRES_PORT: '5432'
       POSTGRES_USER: fernando
     imageRepository: 654654392712.dkr.ecr.us-east-1.amazonaws.com
-    migrationsVersion: "8e012b2"
-    version: "8e012b2"
+    migrationsVersion: "d247b35"
+    version: "d247b35"
     visibility: external
   challenge:databaseConfig:
     engine: "postgres"
