@@ -11,6 +11,7 @@ export const envVars = new k8s.core.v1.ConfigMap(config.projectName, {
   },
   data: {
     POSTGRES_HOST: record.fqdn,
+    APP_VERSION: config.app.version,
     ...getEnvVars(),
   },
 });
