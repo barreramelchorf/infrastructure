@@ -1,0 +1,46 @@
+encryptionsalt: v1:DRL8cZWDalk=:v1:sFj3uiSTHDLgiWGP:YX8886FPpgWC3by5Z6fIsxuTWa/UBQ==
+config:
+  aws:region: us-east-1
+  challenge:app:
+    deployment:
+      autoscaling:
+        cpu:
+          name: cpu
+          target:
+            averageUtilization: 70
+            type: Utilization
+        memory:
+          name: memory
+          target:
+            averageUtilization: 75
+            type: Utilization
+      containers:
+        python:
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+      replicas:
+        max: 4
+        min: 1
+    env:
+      POSTGRES_DB: challenge
+      POSTGRES_PASSWORD: fernando123
+      POSTGRES_PORT: '5432'
+      POSTGRES_USER: fernando
+    imageRepository: 654654392712.dkr.ecr.us-east-1.amazonaws.com
+    migrationsVersion: "8e012b2"
+    reviewApp:
+      pr: 5
+    version: "13c4753"
+    visibility: external
+  challenge:databaseConfig:
+    engine: "postgres"
+    engineVersion: '14.10'
+    instanceClass: db.t3.micro
+    size: 20
+    vpc: challenge
+  kubernetes:context: arn:aws:eks:us-east-1:654654392712:cluster/dev-cluster-staging
